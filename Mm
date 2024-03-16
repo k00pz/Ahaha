@@ -1,0 +1,167 @@
+local DiscordLib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/discord%20lib.txt")()
+
+local win = DiscordLib:Window("Neverlose.net")
+
+local serv = win:Server("Preview by Fsploit", "")
+
+local btns = serv:Channel("Main")
+
+btns:Button("Slap Aura", function()
+DiscordLib:Notification("Notification", "Enabled", "Okay!")
+function isSpawned(player)
+   if workspace:FindFirstChild(player.Name) and player.Character:FindFirstChild("HumanoidRootPart") then
+       return true
+   else
+       return false
+   end
+end
+
+while wait() do
+   for i, v in pairs(game.Players:GetPlayers()) do
+       if isSpawned(v) and v ~= game.Players.LocalPlayer and not v.Character.Head:FindFirstChild("UnoReverseCard") then
+           if (v.Character.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+               game:GetService("ReplicatedStorage").b:FireServer(v.Character["Right Arm"])
+               wait(0.1)
+           end
+       end
+   end
+end
+end)
+
+btns:Seperator()
+
+btns:Button("Anti-Ragdoll", function()
+DiscordLib:Notification("Notification", "Enabled", "Okay!")
+Player = game.Players.LocalPlayer.Character.Name
+
+workspace[Player].isInArena:Destroy()
+wait()
+workspace[Player].IsInDefaultArena:Destroy()
+wait()
+workspace[Player].Ragdolled:Destroy()
+end)
+
+btns:Seperator
+
+btns:Button("Get Killstreak Kills", function()
+DiscordLib:Notification("Notification", "Enabled", "Okay!")
+local args = {
+   [1] = 4,
+   [2] = game:GetService("Players").LocalPlayer.Character.Killstreak
+}
+
+game:GetService("ReplicatedStorage").KillsUpdated:FireServer(unpack(args))
+print("1 Phase is Ready")
+
+wait(0)
+
+local args = {
+   [1] = 10,
+   [2] = game:GetService("Players").LocalPlayer.Character.Killstreak
+}
+
+game:GetService("ReplicatedStorage").KillsUpdated:FireServer(unpack(args))
+print("2 Phase is Ready")
+print("Wait 3 seconds")
+
+wait()
+
+local args = {
+   [1] = 25,
+   [2] = game:GetService("Players").LocalPlayer.Character.Killstreak
+}
+
+game:GetService("ReplicatedStorage").KillsUpdated:FireServer(unpack(args))
+print("3 Phase is Ready")
+print("Wait 10 seconds")
+
+wait()
+
+local args = {
+   [1] = 50,
+   [2] = game:GetService("Players").LocalPlayer.Character.Killstreak
+}
+
+game:GetService("ReplicatedStorage").KillsUpdated:FireServer(unpack(args))
+print("4 Phase is Ready")
+print("Wait 10 seconds")
+
+wait()
+
+local args = {
+   [1] = 75,
+   [2] = game:GetService("Players").LocalPlayer.Character.Killstreak
+}
+
+game:GetService("ReplicatedStorage").KillsUpdated:FireServer(unpack(args))
+print("5 Phase is Ready")
+print("Wait 3 seconds")
+
+wait()
+
+local args = {
+   [1] = 100,
+   [2] = game:GetService("Players").LocalPlayer.Character.Killstreak
+}
+
+game:GetService("ReplicatedStorage").KillsUpdated:FireServer(unpack(args))
+print("6 Phase is Ready")
+print("Wait 5 seconds")
+
+wait(1)
+
+local args = {
+   [1] = 250,
+   [2] = game:GetService("Players").LocalPlayer.Character.Killstreak
+}
+
+game:GetService("ReplicatedStorage").KillsUpdated:FireServer(unpack(args))
+print("Final Phase is Ready")
+print("Wait 8-10 seconds for full transformation")
+end)
+
+btns:Separate ()
+btns:Button("Speed", function()
+DiscordLib:Notification("Notification", "Enabled", "Okay!")
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 50
+end)
+
+local tgls = serv:Channel("Player")
+
+tgls:Toggle("Auto-Farm",false, function(bool)
+print(bool)
+end)
+
+local sldrs = serv:Channel("Sliders")
+
+local sldr = sldrs:Slider("Slide me!", 0, 1000, 400, function(t)
+print(t)
+end)
+
+sldrs:Button("Change to 50", function()
+sldr:Change(50)
+end)
+
+local drops = serv:Channel("Dropdowns")
+
+
+local drop = drops:Dropdown("Pick me!",{"Option 1","Option 2","Option 3","Option 4","Option 5"}, function(bool)
+print(bool)
+end)
+
+drops:Button("Clear", function()
+drop:Clear()
+end)
+
+drops:Button("Add option", function()
+drop:Add("Option")
+end)
+
+local lbls = serv:Channel("Labels")
+
+lbls:Label("This is just a label.")
+
+serv:Channel("by dawid#7205")
+
+
+win:Server("Main", "http://www.roblox.com/asset/?id=6031075938")
